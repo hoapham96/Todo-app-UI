@@ -1,10 +1,17 @@
+import React from 'react';
+
+import Header from './components/Header';
+
+import Home from './pages/Home.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-          Learn React
-      </header>
+    <div className='flex-column justify-flex-start min-100-vh'>
+      <Header />
+      <div className='container'>
+        <Home />
+      </div>
+      
     </div>
   );
 }
