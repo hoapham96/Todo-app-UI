@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import React, {useState} from 'react';
+import React from 'react';
 import Header from './components/Header';
-import Home from './pages/Home.js';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 
 function App() {
-  const [token, setToken] = useState();
+  // const [token, setToken] = useState();
 
-  if (!token) {
-    return <Login setToken = {setToken}/>
-  }
+  // if (!token) {
+  //   return <Login setToken = {setToken}/>
+  // }
 
   return (
     <Router>
@@ -19,8 +19,8 @@ function App() {
       <Header />
       <div className='container'>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       </div>
