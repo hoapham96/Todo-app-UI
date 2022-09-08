@@ -13,9 +13,9 @@ const Header = () => {
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <Link to="/"><h1>Todo App V1</h1></Link>
         <nav className="text-center">
+        <Link to="/">Home</Link>
         {Auth.loggedIn() ? (
             <>
-              <Link to="/">Home</Link>
               <Link to="/Dashboard">Dashboard</Link>
               <a href="/" onClick={logout}>
                 Logout
@@ -23,7 +23,6 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link to="/">Home</Link>
               <Link to="/Login">Login</Link>
             </>
           )}

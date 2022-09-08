@@ -5,12 +5,10 @@ import {TiEdit} from 'react-icons/ti'
 import {BsCheckLg} from 'react-icons/bs'
 import {GrClose} from 'react-icons/gr'
 
-function Todo({todos, completeTodo, removeTodo, updateTodo, checkTodo, closeTodo}) {
-    
+function Todo({getTodo, todos, completeTodo, removeTodo, updateTodo, checkTodo, closeTodo}) {
     
     const [edit, setEdit] = useState({
-        id: null, 
-        value: ''
+        todo_text: '', is_completed: false
     })
 
     const submitUpdate = value => {
@@ -21,35 +19,34 @@ function Todo({todos, completeTodo, removeTodo, updateTodo, checkTodo, closeTodo
         })
     }
 
-
     if (edit.id)  {
         return < TodoForm edit={edit} onSubmit={submitUpdate}/>
     }
 
-    return todos.map((todo, index)=>(
+    return getTodo.map((data, index)=>(
         <div
-        className={todo.isComplete ? 'todo-row complete' : 'todo-row'} 
+        className={data.isComplete ? 'todo-row complete' : 'todo-row'} 
         key={index}
         >
-            <div key={todo.id} onClick={() => completeTodo (todo.id)}>
-                {todo.text}
+            <div key={data.id} onClick={() => completeTodo (data.id)}>
+                {data.todo_text}
             </div>
             <div className="icons">
                 <RiCloseCircleLine
-                onClick={() => removeTodo(todo.id)}
+                onClick={() => removeTodo(data.id)}
                 className='delete-icon'
                 />
                 <TiEdit
-                onClick={() => setEdit({id: todo.id, value: todo.text})}
+                onClick={() => setEdit({id: data.id, value: data.todo_text})}
                 className='edit-icon'
                 />
                 <BsCheckLg 
-                onClick={() => checkTodo(todo.id)}
-                className={todo.isChecked ? 'check-row checked' : 'check-row'}
+                onClick={() => checkTodo(data.id)}
+                className={data.isChecked ? 'check-row checked' : 'check-row'}
                 />
                 <GrClose
-                onClick={() => closeTodo(todo.id)}
-                className={todo.isClosed ? 'check-row closed' : 'check-row'}
+                onClick={() => closeTodo(data.id)}
+                className={data.isClosed ? 'check-row closed' : 'check-row'}
                 />
 
             </div>
